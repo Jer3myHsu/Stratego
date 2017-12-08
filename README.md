@@ -16,6 +16,10 @@ https://www.youtube.com/watch?v=0fKg7e37bQE
    
 # NOTE:
 You can commit everytime you do a major modification.
-If you are working for long, you might want to pull time to time to make sure you have the latest verion. To avoid merge and constant pulling please notify when you are working.
+
+If you are working for long, you might want to pull time to time to make sure you have the latest verion.
+
+To avoid merge and constant pulling please notify when you are working.
+
 If you do get a merge conflict, do not panic, just fix the problem and git add and git commit without a comment.
 According to the video you will get a screen that pops up if you commit with out a comment. Use "esc :wq" to get out of it
