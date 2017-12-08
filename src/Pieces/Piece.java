@@ -7,14 +7,21 @@ import javax.swing.ImageIcon;
  */
 public class Piece
 {
-	private boolean alive, team;
+	private boolean alive = false, team;
 	private int strength, moveSpeed;
 	private String tips;
 	private ImageIcon image = new ImageIcon();
-	public void isAlive(boolean alive) {
+	private String position;
+	public void setPosition(int x, int y) {
+		this.position = x + "," + y;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-	public boolean checkIfAlive() {
+	public boolean isAlive() {
 		return alive;
 	}
 	public void setTeam(boolean team) {
