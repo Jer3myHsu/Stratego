@@ -8,18 +8,19 @@ This is how to use Git commands. Start from 5:46
 https://www.youtube.com/watch?v=0fKg7e37bQE
 
 # To summarize routine
-1. git pull -> Get the lastest version
+1. git pull -> Get the latest version
 2. do all your coding business
+2.5. git status -> check the files that you have modified/created
 3. git add -> add your new/modified files (enter the file name or enter -A to add all)
 4. git commit -m "ENTER COMMENT HERE" -> Put a message that tells everyone what you did. Ex: "Added attack methods"
 5. git push -> Sends your changes to main repository
    
 # NOTE:
-You can commit everytime you do a major modification.
+You can commit and push every time you make a major modification.
 
-If you are working for long, you might want to pull time to time to make sure you have the latest verion.
+If you are working for long, you might want to pull time to time to make sure you have the latest version.
 
-To avoid merge and constant pulling please notify when you are working.
+To avoid merge conflict and constant pulling please notify when you are working.
 
 If you do get a merge conflict, do not panic, just fix the problem and git add and git commit without a comment.
 According to the video you will get a screen that pops up if you commit with out a comment. Use "esc :wq" to get out of it
