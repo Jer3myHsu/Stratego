@@ -10,10 +10,10 @@ https://www.youtube.com/watch?v=0fKg7e37bQE
 # To summarize routine
 1. git pull -> Get the latest version
 2. do all your coding business
-2.5. git status -> check the files that you have modified/created
-3. git add -> add your new/modified files (enter the file name or enter -A to add all)
-4. git commit -m "ENTER COMMENT HERE" -> Put a message that tells everyone what you did. Ex: "Added attack methods"
-5. git push -> Sends your changes to main repository
+3. git status -> check the files that you have modified/created
+4. git add -> add your new/modified files (enter the file name or enter -A to add all)
+5. git commit -m "ENTER COMMENT HERE" -> Put a message that tells everyone what you did. Ex: "Added attack methods"
+6. git push -> Sends your changes to main repository
    
 # NOTE:
 You can commit and push every time you make a major modification.
