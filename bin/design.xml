@@ -1,0 +1,69 @@
+<synth>
+	<style id="default">
+		<font name="Minecraft" size="18" />
+		<state>
+			<color value="#CCC18E" type="BACKGROUND"></color>
+		</state>
+	</style>
+	<bind style="default" type="region" key=".*" />
+	<style id="buttonStyle">
+		<insets top="1" left="1" right="1" bottom="1" />
+		<state>
+			<imagePainter method="buttonBackground" path="texture/mapDefault.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+		<state value="PRESSED">
+			<imagePainter method="buttonBackground" path="texture/mapPressed.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+		<state value="DISABLED and MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/b4.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+		<state value="MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/mapHover.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+	</style>
+	<bind style="buttonStyle" type="region" key="button" />
+	<style id="sideButtonStyle">
+		<insets top="40" left="6" right="6" bottom="5" />
+		<state>
+			<imagePainter method="buttonBackground" path="texture/chest.png"
+				sourceInsets="0 0 0 0" paintCenter="true" />
+		</state>
+		<state value="MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/chest.png"
+				sourceInsets="0 0 0 0" paintCenter="true" />
+		</state>
+		<state value="PRESSED">
+			<imagePainter method="buttonBackground" path="texture/chest2.png"
+				sourceInsets="0 0 0 0" paintCenter="true" />
+		</state>
+		<state value="DISABLED and MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/b4.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+		<property key="Button.textShiftOffset" type="integer" value="1" />
+	</style>
+	<bind style="sideButtonStyle" type="name" key="sideButton" />
+	<style id="menuBarStyle">
+		<state>
+			<color value="#FFFFFF" type="BACKGROUND"></color>
+			<color value="#000000" type="FOREGROUND"></color>
+		</state>
+	</style>
+	<bind style="menuBarStyle" type="region" key="MenuBar"></bind>
+	<style id="progressBarStyle">
+		<state>
+			<color value="#FFFFFF" type="BACKGROUND"></color>
+			<color value="#000000" type="FOREGROUND"></color>
+		</state>
+	</style>
+	<bind style="progressBarStyle" type="region" key="ProgressBar"></bind>
+	<style id="menuItemStyle">
+		<color value="#FFFFFF" type="BACKGROUND"></color>
+		<color value="#000000" type="FOREGROUND"></color>
+	</style>
+	<bind style="menuItemStyle" type="region" key="MenuItem"></bind>
+</synth>
