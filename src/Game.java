@@ -145,7 +145,6 @@ public class Game
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JRadioButtonMenuItem thisButton = (JRadioButtonMenuItem) e.getSource();
-				System.out.println("hey");
 				if (thisButton.isSelected()) {
 					backgroundImage.setIcon(new ImageIcon(Game.class.getResource(
 							"Maps\\" + thisButton.getText().toLowerCase() + ".png")));
@@ -172,7 +171,7 @@ public class Game
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton) e.getSource();
 				name = thisButton.getText();
-				//disableAll(mapButton);
+				disableAll(mapButton);
 				if (gamePhase == startPhase) {
 					if (turn == player1Turn) {
 						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
@@ -221,7 +220,7 @@ public class Game
 			for (int j = 0; j < mapButton[i].length; j++)
 			{
 				mapButton[i][j] = new MapButton(blankImage, blankImage);
-				//mapButton[i][j].setMapEnabled(false);
+				mapButton[i][j].setMapEnabled(false);
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
 			}

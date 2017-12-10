@@ -41,7 +41,7 @@ If you do get a merge conflict, do not panic, just fix the problem and git add a
 According to the video you will get a screen that pops up if you commit with out a comment. Use "esc :wq" to get out of it
 
 # General Comments and Chat
-_Put any comments you want us to see here._
+**Put any comments you want us to see here.**
  
 If you need to bold or etc: https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
