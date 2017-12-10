@@ -21,7 +21,7 @@
 				sourceInsets="1 1 1 1" paintCenter="true" />
 		</state>
 		<state value="MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/mapHover.png"
+			<imagePainter method="buttonBackground" path="texture/maplHover.png"
 				sourceInsets="1 1 1 1" paintCenter="true" />
 		</state>
 	</style>

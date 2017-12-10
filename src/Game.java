@@ -7,9 +7,14 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.renderable.RenderableImageOp;
+import java.io.IOException;
+import java.awt.SplashScreen;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.GroupLayout.Group;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,10 +25,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JWindow;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
 import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 
 import Pieces.*;
@@ -120,15 +127,31 @@ public class Game
 		JPanel rightPanel = new JPanel();//Contains all the right side panels
 		JMenuBar menuBar = new JMenuBar();
 		JMenu gameMenu = new JMenu("Game");
+		JMenu mapMenu = new JMenu("Map");
+		JMenu helpMenu = new JMenu("Help");
+		JRadioButtonMenuItem grassMap = new JRadioButtonMenuItem("Grassland", true);
+		JRadioButtonMenuItem caveMap = new JRadioButtonMenuItem("Cave", false);
+		ButtonGroup mapsItem = new ButtonGroup();
 		JMenuItem restartItem = new JMenuItem("Restart");
 		MapButton mapButton[][] = new MapButton[10][10];
 		JButton sideButton[] = new JButton[12];
-		JLabel backgroundImage = new JLabel(new ImageIcon(Game.class.getResource("background.png")));
+		JLabel backgroundImage = new JLabel(new ImageIcon(Game.class.getResource("Maps\\grassland.png")));
 		JLabel title = new JLabel("It is your turn...");
 		ImageIcon blankImage = new ImageIcon(Game.class.getResource("blank.png"));
 		Font font = new Font("Minecraft", Font.BOLD, 32);
 		String names[] = {"Ender Dragon", "Tnt", "Flag", "Ghast", "Golem", "Herobrine",
 				"Miner", "Skeleton", "Enderman", "Witch", "Wither", "Zombie"};
+		ActionListener mapSelectActions = new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JRadioButtonMenuItem thisButton = (JRadioButtonMenuItem) e.getSource();
+				System.out.println("hey");
+				if (thisButton.isSelected()) {
+					backgroundImage.setIcon(new ImageIcon(Game.class.getResource(
+							"Maps\\" + thisButton.getText().toLowerCase() + ".png")));
+				}
+			}
+		};
 		ActionListener mapActions = new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -149,7 +172,7 @@ public class Game
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton) e.getSource();
 				name = thisButton.getText();
-				disableAll(mapButton);
+				//disableAll(mapButton);
 				if (gamePhase == startPhase) {
 					if (turn == player1Turn) {
 						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
@@ -181,16 +204,24 @@ public class Game
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		
 		backgroundImage.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mapsItem.add(grassMap);
+		mapsItem.add(caveMap);
+		grassMap.addActionListener(mapSelectActions);
+		caveMap.addActionListener(mapSelectActions);
 		frame.setJMenuBar(menuBar);
-		gameMenu.add(restartItem);
 		menuBar.add(gameMenu);
+		menuBar.add(mapMenu);
+		menuBar.add(helpMenu);
+		gameMenu.add(restartItem);
+		mapMenu.add(grassMap);
+		mapMenu.add(caveMap);
 		
 		for (int i = 0; i < mapButton.length; i++)
 		{
 			for (int j = 0; j < mapButton[i].length; j++)
 			{
 				mapButton[i][j] = new MapButton(blankImage, blankImage);
-				mapButton[i][j].setMapEnabled(false);
+				//mapButton[i][j].setMapEnabled(false);
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
 			}
