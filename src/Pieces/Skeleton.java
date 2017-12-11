@@ -1,10 +1,11 @@
 package Pieces;
-
-public class Skeleton extends Piece {
-	public Skeleton() {
+import Pieces.*;
+public class Skeleton extends PieceTemplate {
+	public Skeleton(boolean team) {
+		setTeam(team);
 		setStrength(7);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Skeleton.class.getResource("skeleton.png"));
 		setTipText("Strength: 7");
 	}
 }

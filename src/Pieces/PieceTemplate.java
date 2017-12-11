@@ -1,14 +1,16 @@
 package Pieces;
 
+import java.net.URL;
+
 import javax.swing.ImageIcon;
 
 /* Jeremy Hsu
  * 
  */
-public class Piece
+public class PieceTemplate
 {
 	private boolean alive = false, team;
-	private int strength, moveSpeed;
+	private int strength, moveSpeed, numOfPieces;
 	private String tips;
 	private ImageIcon image = new ImageIcon();
 	private String position;
@@ -42,16 +44,22 @@ public class Piece
 	public int getMovement() {
 		return moveSpeed;
 	}
-	public void setImage(ImageIcon image) {
-		this.image = new ImageIcon(image.getImage());
+	public void setImage(URL imagePath) {
+		this.image = new ImageIcon(imagePath);
 	}
-	public int getImage() {
-		return moveSpeed;
+	public ImageIcon getImage() {
+		return image;
 	}
 	public void setTipText(String text) {
 		this.tips = text;
 	}
 	public String getTipText() {
 		return tips;
+	}
+	public int getNumOfPiecesAvailable() {
+		return numOfPieces;
+	}
+	public void setNumOfPieces(int num) {
+		this.numOfPieces = num;
 	}
 }

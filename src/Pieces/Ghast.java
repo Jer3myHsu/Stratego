@@ -1,10 +1,11 @@
 package Pieces;
-
-public class Ghast extends Piece {
-	public Ghast() {
+import Pieces.*;
+public class Ghast extends PieceTemplate {
+	public Ghast(boolean team) {
+		setTeam(team);
 		setStrength(8);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Ghast.class.getResource("ghast.png"));
 		setTipText("Strength: 8");
 	}
 }

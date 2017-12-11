@@ -1,7 +1,8 @@
 package Pieces;
-
-public class Flag extends Piece {
-	public Flag() {
+import Pieces.*;
+public class Flag extends PieceTemplate {
+	public Flag(boolean team) {
+		setTeam(team);
 		setStrength(0);
 		setMovement(0);
 		//setImage();

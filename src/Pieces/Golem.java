@@ -1,7 +1,8 @@
 package Pieces;
-
-public class Golem extends Piece {
-	public Golem() {
+import Pieces.*;
+public class Golem extends PieceTemplate {
+	public Golem(boolean team) {
+		setTeam(team);
 		setStrength(5);
 		setMovement(1);
 		//setImage();

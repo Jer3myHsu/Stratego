@@ -1,10 +1,11 @@
 package Pieces;
-
-public class Zombie extends Piece {
-	public Zombie() {
+import Pieces.*;
+public class Zombie extends PieceTemplate {
+	public Zombie(boolean team) {
+		setTeam(team);
 		setStrength(4);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Zombie.class.getResource("zombie.png"));
 		setTipText("Strength: 4");
 	}
 }

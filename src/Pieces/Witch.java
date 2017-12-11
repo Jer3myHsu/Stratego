@@ -1,7 +1,8 @@
 package Pieces;
-
-public class Witch extends Piece {
-	public Witch() {
+import Pieces.*;
+public class Witch extends PieceTemplate {
+	public Witch(boolean team) {
+		setTeam(team);
 		setStrength(6);
 		setMovement(1);
 		//setImage();

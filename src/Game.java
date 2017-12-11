@@ -43,7 +43,8 @@ public class Game
 	static int count;
     static Timer timer1;
     final static int startPhase = 0, battlePhase = 1, gameOverPhase = 2;
-    final static boolean player1Turn = true, player2Turn = false;
+    final static boolean p1Team = true, p2Team = false;
+    final static boolean p1Turn = true, p2Turn = false;
     static boolean turn = true;
     static int gamePhase = 0;
     static String name = "";
@@ -119,6 +120,9 @@ public class Game
 	public static void addComponentsToFrame(JFrame frame)
 	{
 		//Declare Variables
+		Piece p1Piece = new Piece(p1Team);
+		Piece p2Piece = new Piece(p2Team);
+		
 		Container container = frame.getContentPane();//Contains every panel
 		JPanel horizontalPanel = new JPanel();//Centers all Panels
 		JPanel buttonPanel = new JPanel();//Contains Map buttons
@@ -131,7 +135,9 @@ public class Game
 		JMenu helpMenu = new JMenu("Help");
 		JRadioButtonMenuItem grassMap = new JRadioButtonMenuItem("Grassland", true);
 		JRadioButtonMenuItem caveMap = new JRadioButtonMenuItem("Cave", false);
-		ButtonGroup mapsItem = new ButtonGroup();
+		JRadioButtonMenuItem netherMap = new JRadioButtonMenuItem("Nether", false);
+		JRadioButtonMenuItem endMap = new JRadioButtonMenuItem("End", false);
+		ButtonGroup mapsGroup = new ButtonGroup();
 		JMenuItem restartItem = new JMenuItem("Restart");
 		MapButton mapButton[][] = new MapButton[10][10];
 		JButton sideButton[] = new JButton[12];
@@ -157,7 +163,12 @@ public class Game
 				JButton thisButton = (JButton) e.getSource();
 				if (gamePhase == startPhase) {
 					switch (name) {
-					case "Ender Dragon": thisButton.setIcon(new ImageIcon(Game.class.getResource("test.png")));
+					case "Ghast": thisButton.setIcon(p1Piece.ghast[0].getImage());
+					case "Herobrine": thisButton.setIcon(p1Piece.herobrine.getImage());
+					case "Skeleton": thisButton.setIcon(p1Piece.skeleton[].getImage());
+					case "Tnt": thisButton.setIcon(p1Piece.tnt[].getImage());
+					case "Zombie": thisButton.setIcon(p1Piece.zombie[].getImage());
+					case "Wither": thisButton.setIcon(p1Piece.wither.getImage());
 					}
 				} else if (gamePhase == battlePhase) {
 					
@@ -173,7 +184,7 @@ public class Game
 				name = thisButton.getText();
 				disableAll(mapButton);
 				if (gamePhase == startPhase) {
-					if (turn == player1Turn) {
+					if (turn == p1Turn) {
 						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
 							for (int j = 0; j < mapButton[i].length; j++) {
 								mapButton[i][j].setMapEnabled(true);
@@ -203,10 +214,14 @@ public class Game
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		
 		backgroundImage.setAlignmentX(Component.CENTER_ALIGNMENT);
-		mapsItem.add(grassMap);
-		mapsItem.add(caveMap);
+		mapsGroup.add(grassMap);
+		mapsGroup.add(caveMap);
+		mapsGroup.add(netherMap);
+		mapsGroup.add(endMap);
 		grassMap.addActionListener(mapSelectActions);
 		caveMap.addActionListener(mapSelectActions);
+		netherMap.addActionListener(mapSelectActions);
+		endMap.addActionListener(mapSelectActions);
 		frame.setJMenuBar(menuBar);
 		menuBar.add(gameMenu);
 		menuBar.add(mapMenu);
@@ -214,6 +229,8 @@ public class Game
 		gameMenu.add(restartItem);
 		mapMenu.add(grassMap);
 		mapMenu.add(caveMap);
+		mapMenu.add(netherMap);
+		mapMenu.add(endMap);
 		
 		for (int i = 0; i < mapButton.length; i++)
 		{
