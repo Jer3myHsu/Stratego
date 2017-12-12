@@ -165,9 +165,9 @@ public class Game
 					switch (name) {
 					case "Ghast": thisButton.setIcon(p1Piece.ghast[0].getImage());
 					case "Herobrine": thisButton.setIcon(p1Piece.herobrine.getImage());
-					case "Skeleton": thisButton.setIcon(p1Piece.skeleton[].getImage());
-					case "Tnt": thisButton.setIcon(p1Piece.tnt[].getImage());
-					case "Zombie": thisButton.setIcon(p1Piece.zombie[].getImage());
+					case "Skeleton": thisButton.setIcon(p1Piece.skeleton[0].getImage());
+					case "Tnt": thisButton.setIcon(p1Piece.tnt[0].getImage());
+					case "Zombie": thisButton.setIcon(p1Piece.zombie[0].getImage());
 					case "Wither": thisButton.setIcon(p1Piece.wither.getImage());
 					}
 				} else if (gamePhase == battlePhase) {

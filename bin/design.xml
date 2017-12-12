@@ -13,32 +13,32 @@
 				sourceInsets="1 1 1 1" paintCenter="true" />
 		</state>
 		<state value="PRESSED">
-			<imagePainter method="buttonBackground" path="texture/mapPressed.png"
-				sourceInsets="1 1 1 1" paintCenter="true" />
+			<imagePainter method="buttonBackground" path="texture/mapPressed2.png"
+				sourceInsets="6 6 6 6" paintCenter="true" />
 		</state>
 		<state value="DISABLED and MOUSE_OVER">
 			<imagePainter method="buttonBackground" path="texture/b4.png"
 				sourceInsets="1 1 1 1" paintCenter="true" />
 		</state>
 		<state value="MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/maplHover.png"
-				sourceInsets="1 1 1 1" paintCenter="true" />
+			<imagePainter method="buttonBackground" path="texture/mapHover2.png"
+				sourceInsets="9 9 9 9" paintCenter="true" />
 		</state>
 	</style>
 	<bind style="buttonStyle" type="region" key="button" />
 	<style id="sideButtonStyle">
-		<insets top="40" left="6" right="6" bottom="5" />
+		<insets top="10" left="6" right="6" bottom="10" />
 		<state>
-			<imagePainter method="buttonBackground" path="texture/chest.png"
-				sourceInsets="0 0 0 0" paintCenter="true" />
+			<imagePainter method="buttonBackground" path="texture/button.png"
+				sourceInsets="12 12 12 12" paintCenter="true" />
 		</state>
 		<state value="MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/chest.png"
-				sourceInsets="0 0 0 0" paintCenter="true" />
+			<imagePainter method="buttonBackground" path="texture/buttonHover.png"
+				sourceInsets="12 12 12 12" paintCenter="true" />
 		</state>
 		<state value="PRESSED">
-			<imagePainter method="buttonBackground" path="texture/chest2.png"
-				sourceInsets="0 0 0 0" paintCenter="true" />
+			<imagePainter method="buttonBackground" path="texture/buttonPressed.png"
+				sourceInsets="4 4 4 4" paintCenter="true" />
 		</state>
 		<state value="DISABLED and MOUSE_OVER">
 			<imagePainter method="buttonBackground" path="texture/b4.png"
@@ -48,12 +48,13 @@
 	</style>
 	<bind style="sideButtonStyle" type="name" key="sideButton" />
 	<style id="menuBarStyle">
+		<insets top="1" left="1" right="1" bottom="1" />
 		<state>
 			<color value="#FFFFFF" type="BACKGROUND"></color>
 			<color value="#000000" type="FOREGROUND"></color>
 		</state>
 	</style>
-	<bind style="menuBarStyle" type="region" key="MenuBar"></bind>
+	<bind style="menuBarStyle" type="region" key="Menu"></bind>
 	<style id="progressBarStyle">
 		<state>
 			<color value="#FFFFFF" type="BACKGROUND"></color>
