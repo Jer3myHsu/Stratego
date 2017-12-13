@@ -7,14 +7,14 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class MapButton extends JButton implements MouseListener {
-	Font defaultFont = new Font("Gill Sans MT",Font.BOLD,14);//Unused
+public class MapButton extends JButton implements MouseListener {//Unused
+	Font defaultFont = new Font("Gill Sans MT",Font.BOLD,14);
     Color textColor = Color.decode("#ffffff");//Unused
     Color backgroundColor = Color.decode("#000000");
     Color hoverColor = Color.decode("#FFD800");
     Color disabledColor = Color.lightGray;
     
-    public MapButton(String s) {//unused
+    public MapButton(String s) {
         s = s.toUpperCase();
         this.setFocusPainted(false);
         this.setBorderPainted(false);

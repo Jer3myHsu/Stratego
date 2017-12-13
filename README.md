@@ -45,8 +45,10 @@ According to the video you will get a screen that pops up if you commit with out
  
 If you need to bold or etc: https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
-**Jeremy:** So we are currently not using Synth look and feel but tbh I kinda want to bc there is a lot we can do with it. Currently, we can only color component's background, foreground, and border (if supported) and will have no texture. But with Synth look and feel we can use image painters and design actual legit buttons for example the top right exit button. Check out some stuff I have been designing in Images\texture folder. The reason we can't use Synth laf is bc I'm having problems modifying the JProgressBar, JMenu (and its inner components), and the JPanel. Once I figure out how to get those working, I we will switch to Synth laf. If you want to know more about Synth, use google.
+**Jeremy: Hell ya!!! Synth look and feel is working.** (Except for the progress bar and menu needs some minor fixes)
 
 About the splash screen. The way we did it is technically not the correct way of doing it. We created a JWindow (which is basically JFrame without the minimize-expand-exit thing) and made it look like a splash screen. A real splash screen is created using the SplashScreen object. _"Well what's the difference?"_ The purpose of a splash screen is not just to look cool on start up but to provide the user with feedback telling them that the program has started. Since we are using a JWindow, the start up will take the same time as if it were to just open the main JFrame therefore making the JWindow useless. _"So why doen't we just use the actual SplashScreen?"_ I can get it to kinda work but it will only work if we run the program from the command line and that is kinda annoying. I'm guessing the reason it has to be from the command line is bc it receives the image path as it runs therefore it won't spend time reading the code. This results with a fast splash screen start up. We might look more into this near the completion of this program so we don't have to keep running from the command line.
+
+If we do use the proper splash screen then we don't need to worry about synth progress bar, so issa win win.
  
 

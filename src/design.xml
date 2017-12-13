@@ -2,11 +2,32 @@
 	<style id="default">
 		<font name="Minecraft" size="18" />
 		<state>
-			<color value="#CCC18E" type="BACKGROUND"></color>
+			<color value="#726451" type="BACKGROUND"></color>
 		</state>
 	</style>
 	<bind style="default" type="region" key=".*" />
 	<style id="buttonStyle">
+		<insets top="10" left="6" right="6" bottom="10" />
+		<state>
+			<imagePainter method="buttonBackground" path="texture/button.png"
+				sourceInsets="12 12 12 12" paintCenter="true" />
+		</state>
+		<state value="PRESSED">
+			<imagePainter method="buttonBackground" path="texture/buttonPressed.png"
+				sourceInsets="4 4 4 4" paintCenter="true" />
+		</state>
+		<state value="DISABLED and MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/b4.png"
+				sourceInsets="1 1 1 1" paintCenter="true" />
+		</state>
+		<state value="MOUSE_OVER">
+			<imagePainter method="buttonBackground" path="texture/buttonHover.png"
+				sourceInsets="12 12 12 12" paintCenter="true" />
+		</state>
+		<property key="Button.textShiftOffset" type="integer" value="1" />
+	</style>
+	<bind style="buttonStyle" type="region" key="button" />
+	<style id="mapButtonStyle">
 		<insets top="1" left="1" right="1" bottom="1" />
 		<state>
 			<imagePainter method="buttonBackground" path="texture/mapDefault.png"
@@ -25,46 +46,64 @@
 				sourceInsets="9 9 9 9" paintCenter="true" />
 		</state>
 	</style>
-	<bind style="buttonStyle" type="region" key="button" />
-	<style id="sideButtonStyle">
-		<insets top="10" left="6" right="6" bottom="10" />
-		<state>
-			<imagePainter method="buttonBackground" path="texture/button.png"
-				sourceInsets="12 12 12 12" paintCenter="true" />
+	<bind style="mapButtonStyle" type="name" key="mapButton" />
+	<style id="panelStyle">
+		<opaque value="FALSE" />
+	</style>
+	<bind style="panelStyle" type="region" key="Panel" />
+	<style id="sidePanelStyle">
+		<insets top="28" left="28" right="28" bottom="28" />
+		<imagePainter method="panelBackground" path="texture/sidePanel.png"
+			sourceInsets="28 28 28 28" paintCenter="true" />
+	</style>
+	<bind style="sidePanelStyle" type="name" key="sidePanel" />
+	<style id="menuBarStyle">
+		<imagePainter method="menuBarBackground" path="texture/menu/menuBar.png"
+			sourceInsets="2 2 2 2" paintCenter="true" />
+	</style>
+	<bind style="menuBarStyle" type="region" key="menuBar" />
+	<style id="menuStyle">
+		<insets top="2" left="4" right="4" bottom="2" />
+	</style>
+	<bind style="menuStyle" type="region" key="menu" />
+	<style id="radioMenuStyle">
+		<insets top="2" left="4" right="4" bottom="2" />
+		<imagePainter method="radioButtonMenuItemBackground"
+			path="texture/menu/basic.png" sourceInsets="0 0 0 0" paintCenter="true" />
+		<imageIcon id="unselectIcon" path="texture/menu/unselected.png" />
+		<imageIcon id="selectIcon" path="texture/menu/selected.png" />
+		<property key="RadioButtonMenuItem.checkIcon" value="unselectIcon" />
+		<state value="SELECTED">
+			<property key="RadioButtonMenuItem.checkIcon" value="selectIcon" />
 		</state>
 		<state value="MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/buttonHover.png"
-				sourceInsets="12 12 12 12" paintCenter="true" />
+			<imagePainter method="radioButtonMenuItemBackground"
+				path="texture/menu/highlight.png" sourceInsets="2 2 2 2"
+				paintCenter="true" />
 		</state>
-		<state value="PRESSED">
-			<imagePainter method="buttonBackground" path="texture/buttonPressed.png"
-				sourceInsets="4 4 4 4" paintCenter="true" />
-		</state>
-		<state value="DISABLED and MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/b4.png"
-				sourceInsets="1 1 1 1" paintCenter="true" />
-		</state>
-		<property key="Button.textShiftOffset" type="integer" value="1" />
-	</style>
-	<bind style="sideButtonStyle" type="name" key="sideButton" />
-	<style id="menuBarStyle">
-		<insets top="1" left="1" right="1" bottom="1" />
-		<state>
-			<color value="#FFFFFF" type="BACKGROUND"></color>
-			<color value="#000000" type="FOREGROUND"></color>
+		<state value="MOUSE_OVER and SELECTED">
+			<property key="RadioButtonMenuItem.checkIcon" value="selectIcon" />
+			<imagePainter method="radioButtonMenuItemBackground"
+				path="texture/menu/highlight.png" sourceInsets="2 2 2 2"
+				paintCenter="true" />
 		</state>
 	</style>
-	<bind style="menuBarStyle" type="region" key="Menu"></bind>
-	<style id="progressBarStyle">
-		<state>
-			<color value="#FFFFFF" type="BACKGROUND"></color>
-			<color value="#000000" type="FOREGROUND"></color>
-		</state>
-	</style>
-	<bind style="progressBarStyle" type="region" key="ProgressBar"></bind>
+	<bind style="radioMenuStyle" type="region" key="radioButtonMenuItem" />
 	<style id="menuItemStyle">
-		<color value="#FFFFFF" type="BACKGROUND"></color>
-		<color value="#000000" type="FOREGROUND"></color>
+		<insets top="2" left="4" right="4" bottom="2" />
+		<imagePainter method="menuItemBackground" path="texture/menu/basic.png"
+			sourceInsets="0 0 0 0" paintCenter="true" />
+		<state value="MOUSE_OVER">
+			<imagePainter method="menuItemBackground" path="texture/menu/highlight.png"
+				sourceInsets="2 2 2 2" paintCenter="true" />
+		</state>
 	</style>
-	<bind style="menuItemStyle" type="region" key="MenuItem"></bind>
+	<bind style="menuItemStyle" type="region" key="menuItem" />
+	<style id="progressBarStyle">
+		<imagePainter method="progressBarBackground" path="emptyLoading.png"
+			sourceInsets="3 3 3 3" paintCenter="true" />
+		<imagePainter method="progressBarForeground" path="loading.png"
+			sourceInsets="3 3 3 3" paintCenter="true" />
+	</style>
+	<bind style="progressBarStyle" type="region" key="progressBar" />
 </synth>

@@ -53,7 +53,7 @@ public class Game
 		SynthLookAndFeel synth = new SynthLookAndFeel();
 		try {
 			synth.load(Game.class.getResourceAsStream("design.xml"), Game.class);
-			//UIManager.setLookAndFeel(synth);
+			UIManager.setLookAndFeel(synth);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,19 +65,23 @@ public class Game
 		JPanel panel = new JPanel();
         Container container = win.getContentPane();
         JLabel label = new JLabel(new ImageIcon(Game.class.getResource("Title.png")));
+        JLabel loading = new JLabel(new ImageIcon(Game.class.getResource("loading.gif")));
         container.setLayout(null);
-        panel.setBounds(0,0, 750, 200);//size of the title image
+        panel.setBounds(0,0, 750, 300);//size of the title image
         container.add(panel);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loading.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(label);
+        panel.add(loading);
         panel.setOpaque(false);
         progressBar.setMaximum(100);
         progressBar.setBounds(162, 176, 428, 5);//This is hard to track, try using photoshop or etc to get values
-        progressBar.setBackground(Color.decode("#580F19"));//Illusion that it is invisable
-        progressBar.setForeground(Color.orange);
-        progressBar.setBorder(null);
-        progressBar.setBorderPainted(false);
+        //progressBar.setBackground(Color.decode("#580F19"));//Illusion that it is invisable
+        //progressBar.setForeground(Color.orange);
+        //progressBar.setBorder(null);
+        //progressBar.setBorderPainted(false);
         progressBar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        progressBar.setVisible(true);
         container.add(progressBar);
         container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         loadProgressBar(progressBar, win);
@@ -164,11 +168,17 @@ public class Game
 				if (gamePhase == startPhase) {
 					switch (name) {
 					case "Ghast": thisButton.setIcon(p1Piece.ghast[0].getImage());
+					break;
 					case "Herobrine": thisButton.setIcon(p1Piece.herobrine.getImage());
+					break;
 					case "Skeleton": thisButton.setIcon(p1Piece.skeleton[0].getImage());
+					break;
 					case "Tnt": thisButton.setIcon(p1Piece.tnt[0].getImage());
+					break;
 					case "Zombie": thisButton.setIcon(p1Piece.zombie[0].getImage());
+					break;
 					case "Wither": thisButton.setIcon(p1Piece.wither.getImage());
+					break;
 					}
 				} else if (gamePhase == battlePhase) {
 					
@@ -212,6 +222,7 @@ public class Game
 		horizontalPanel.setLayout(new BoxLayout(horizontalPanel, BoxLayout.X_AXIS));
 		statPanel.setLayout(new GridLayout(0,3, 10, 10));
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+		rightPanel.setName("sidePanel");
 		
 		backgroundImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mapsGroup.add(grassMap);
@@ -238,6 +249,7 @@ public class Game
 			{
 				mapButton[i][j] = new MapButton(blankImage, blankImage);
 				mapButton[i][j].setMapEnabled(false);
+				mapButton[i][j].setName("mapButton");
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
 			}
@@ -247,8 +259,6 @@ public class Game
 		mapPanel.add(backgroundImage);
 		mapPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		horizontalPanel.add(mapPanel);
-		rightPanel.setBorder(BorderFactory.createMatteBorder(
-                28, 28, 28, 28, new ImageIcon(Game.class.getResource("texture\\border.png"))));
 		rightPanel.setBackground(Color.gray);
 		title.setFont(font);
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -256,7 +266,6 @@ public class Game
 		for (int i = 0; i < sideButton.length; i++)
 		{
 			sideButton[i] = new JButton(names[i]);
-			sideButton[i].setName("sideButton");
 			sideButton[i].setAlignmentX(Component.CENTER_ALIGNMENT);
 			sideButton[i].addActionListener(sideAction);
 			statPanel.add(sideButton[i]);
