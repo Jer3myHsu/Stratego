@@ -5,7 +5,7 @@ public class Golem extends PieceTemplate {
 		setTeam(team);
 		setStrength(5);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Golem.class.getResource("golem.png"));
 		setTipText("Strength: 5");
 	}
 }

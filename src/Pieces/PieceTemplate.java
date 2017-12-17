@@ -29,6 +29,9 @@ public class PieceTemplate
 	public void setTeam(boolean team) {
 		this.team = team;
 	}
+	public boolean getTeam() {
+		return team;
+	}
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}

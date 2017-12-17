@@ -5,7 +5,7 @@ public class Miner extends PieceTemplate {
 		setTeam(team);
 		setStrength(3);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Miner.class.getResource("miner.png"));
 		setTipText("Strength: 3 | This can defuse Tnt");
 	}
 }

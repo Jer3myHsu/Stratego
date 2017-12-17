@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.awt.SplashScreen;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout.Group;
@@ -41,14 +42,14 @@ import Pieces.*;
 public class Game
 {
 	static int count;
-    static Timer timer1;
-    final static int startPhase = 0, battlePhase = 1, gameOverPhase = 2;
-    final static boolean p1Team = true, p2Team = false;
-    final static boolean p1Turn = true, p2Turn = false;
-    static boolean turn = true;
-    static int gamePhase = 0;
-    static String name = "";
-    public static void  main(String[] args)
+	static Timer timer1;
+	final static int startPhase = 0, battlePhase = 1, gameOverPhase = 2;
+	final static boolean p1Turn = true, p2Turn = false;
+	static boolean turn = true;
+	static int gamePhase = 0;
+	static String name = "";
+	static ImageIcon blankImage = new ImageIcon(Game.class.getResource("blank.png"));
+	public static void  main(String[] args)
 	{
 		SynthLookAndFeel synth = new SynthLookAndFeel();
 		try {
@@ -63,32 +64,32 @@ public class Game
 		JProgressBar progressBar = new JProgressBar();
 		JWindow win = new JWindow();
 		JPanel panel = new JPanel();
-        Container container = win.getContentPane();
-        JLabel label = new JLabel(new ImageIcon(Game.class.getResource("Title.png")));
-        JLabel loading = new JLabel(new ImageIcon(Game.class.getResource("loading.gif")));
-        container.setLayout(null);
-        panel.setBounds(0,0, 750, 300);//size of the title image
-        container.add(panel);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        loading.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(label);
-        panel.add(loading);
-        panel.setOpaque(false);
-        progressBar.setMaximum(100);
-        progressBar.setBounds(162, 176, 428, 5);//This is hard to track, try using photoshop or etc to get values
-        //progressBar.setBackground(Color.decode("#580F19"));//Illusion that it is invisable
-        //progressBar.setForeground(Color.orange);
-        //progressBar.setBorder(null);
-        //progressBar.setBorderPainted(false);
-        progressBar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        progressBar.setVisible(true);
-        container.add(progressBar);
-        container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        loadProgressBar(progressBar, win);
-        win.setSize(750, 300);
-        win.setBackground(new Color(0,0,0,0));//This to set Opaque false
-        win.setLocationRelativeTo(null);
-        win.setVisible(true);
+		Container container = win.getContentPane();
+		JLabel label = new JLabel(new ImageIcon(Game.class.getResource("Title.png")));
+		JLabel loading = new JLabel(new ImageIcon(Game.class.getResource("loading.gif")));
+		container.setLayout(null);
+		panel.setBounds(0,0, 750, 300);//size of the title image
+		container.add(panel);
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		loading.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(label);
+		panel.add(loading);
+		panel.setOpaque(false);
+		progressBar.setMaximum(100);
+		progressBar.setBounds(162, 176, 428, 5);//This is hard to track, try using photoshop or etc to get values
+		//progressBar.setBackground(Color.decode("#580F19"));//Illusion that it is invisable
+		//progressBar.setForeground(Color.orange);
+		//progressBar.setBorder(null);
+		//progressBar.setBorderPainted(false);
+		progressBar.setAlignmentX(Component.CENTER_ALIGNMENT);
+		progressBar.setVisible(true);
+		container.add(progressBar);
+		container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		loadProgressBar(progressBar, win);
+		win.setSize(750, 300);
+		win.setBackground(new Color(0,0,0,0));//This to set Opaque false
+		win.setLocationRelativeTo(null);
+		win.setVisible(true);
 	}
 	private static void loadProgressBar(JProgressBar progressBar, JWindow win) {
 		//this is the loading bar
@@ -124,9 +125,9 @@ public class Game
 	public static void addComponentsToFrame(JFrame frame)
 	{
 		//Declare Variables
-		Piece p1Piece = new Piece(p1Team);
-		Piece p2Piece = new Piece(p2Team);
-		
+		Piece p1Piece = new Piece(p1Turn);
+		Piece p2Piece = new Piece(p2Turn);
+
 		Container container = frame.getContentPane();//Contains every panel
 		JPanel horizontalPanel = new JPanel();//Centers all Panels
 		JPanel buttonPanel = new JPanel();//Contains Map buttons
@@ -143,11 +144,11 @@ public class Game
 		JRadioButtonMenuItem endMap = new JRadioButtonMenuItem("End", false);
 		ButtonGroup mapsGroup = new ButtonGroup();
 		JMenuItem restartItem = new JMenuItem("Restart");
-		MapButton mapButton[][] = new MapButton[10][10];
+		JButton mapButton[][] = new JButton[10][10];
 		JButton sideButton[] = new JButton[12];
+		JButton endTurnButton = new JButton("End Turn");
 		JLabel backgroundImage = new JLabel(new ImageIcon(Game.class.getResource("Maps\\grassland.png")));
 		JLabel title = new JLabel("It is your turn...");
-		ImageIcon blankImage = new ImageIcon(Game.class.getResource("blank.png"));
 		Font font = new Font("Minecraft", Font.BOLD, 32);
 		String names[] = {"Ender Dragon", "Tnt", "Flag", "Ghast", "Golem", "Herobrine",
 				"Miner", "Skeleton", "Enderman", "Witch", "Wither", "Zombie"};
@@ -161,29 +162,49 @@ public class Game
 				}
 			}
 		};
+		ActionListener nextPlayerAction = new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (gamePhase == startPhase) {
+					if (turn == p1Turn) {
+						disableAll(mapButton, p1Piece);
+						endTurnButton.setEnabled(false);
+						turn = p2Turn;
+					} else {
+						disableAll(mapButton, p2Piece);
+						turn = p1Turn;
+						gamePhase = battlePhase;
+					}
+				}
+			}
+		};
 		ActionListener mapActions = new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton) e.getSource();
+				Piece piece;
+				if (turn == p1Turn) {
+					piece = p1Piece;
+				} else {
+					piece = p2Piece;
+				}
 				if (gamePhase == startPhase) {
-					switch (name) {
-					case "Ghast": thisButton.setIcon(p1Piece.ghast[0].getImage());
-					break;
-					case "Herobrine": thisButton.setIcon(p1Piece.herobrine.getImage());
-					break;
-					case "Skeleton": thisButton.setIcon(p1Piece.skeleton[0].getImage());
-					break;
-					case "Tnt": thisButton.setIcon(p1Piece.tnt[0].getImage());
-					break;
-					case "Zombie": thisButton.setIcon(p1Piece.zombie[0].getImage());
-					break;
-					case "Wither": thisButton.setIcon(p1Piece.wither.getImage());
-					break;
+					if (thisButton.getIcon() != blankImage) {
+						return;
+					}
+					if (piece.isAmountValid(name)) {
+						piece.usePiece(name);
+						piece.setButton(name, thisButton);
+					}
+					if (piece.isAllPiecesOnBoard()) {
+						endTurnButton.setEnabled(true);
+					} else {
+						endTurnButton.setEnabled(false);
 					}
 				} else if (gamePhase == battlePhase) {
-					
+
 				} else {
-					
+
 				}
 			}
 		};
@@ -192,18 +213,19 @@ public class Game
 			public void actionPerformed(ActionEvent e) {
 				JButton thisButton = (JButton) e.getSource();
 				name = thisButton.getText();
-				disableAll(mapButton);
 				if (gamePhase == startPhase) {
 					if (turn == p1Turn) {
+						disableAll(mapButton, p1Piece);
 						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
 							for (int j = 0; j < mapButton[i].length; j++) {
-								mapButton[i][j].setMapEnabled(true);
+								mapButton[i][j].setEnabled(true);
 							}
 						}
 					} else {
+						disableAll(mapButton, p2Piece);
 						for (int i = 0; i < 4; i++) {
 							for (int j = 0; j < mapButton[i].length; j++) {
-								mapButton[i][j].setMapEnabled(true);
+								mapButton[i][j].setEnabled(true);
 							}
 						}
 					}
@@ -214,7 +236,7 @@ public class Game
 				}
 			}
 		};
-		
+
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		mapPanel.setLayout(new OverlayLayout(mapPanel));
 		buttonPanel.setLayout(new GridLayout(10, 10));
@@ -223,7 +245,7 @@ public class Game
 		statPanel.setLayout(new GridLayout(0,3, 10, 10));
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		rightPanel.setName("sidePanel");
-		
+
 		backgroundImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mapsGroup.add(grassMap);
 		mapsGroup.add(caveMap);
@@ -242,13 +264,13 @@ public class Game
 		mapMenu.add(caveMap);
 		mapMenu.add(netherMap);
 		mapMenu.add(endMap);
-		
+
 		for (int i = 0; i < mapButton.length; i++)
 		{
 			for (int j = 0; j < mapButton[i].length; j++)
 			{
-				mapButton[i][j] = new MapButton(blankImage, blankImage);
-				mapButton[i][j].setMapEnabled(false);
+				mapButton[i][j] = new JButton(blankImage);
+				mapButton[i][j].setEnabled(false);
 				mapButton[i][j].setName("mapButton");
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
@@ -272,14 +294,26 @@ public class Game
 		}
 		statPanel.setOpaque(false);
 		rightPanel.add(statPanel);
+		rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		endTurnButton.addActionListener(nextPlayerAction);
+		endTurnButton.setEnabled(false);
+		endTurnButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		endTurnButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(endTurnButton);
 		horizontalPanel.add(rightPanel);
 		container.add(horizontalPanel);
 	}
-	public static void disableAll(MapButton[][] button) {
+	public static void disableAll(JButton[][] button, Piece piece) {
 		for (int i = 0; i < button.length; i++) {
 			for (int j = 0; j < button[i].length; j++) {
-				button[i][j].setMapEnabled(false);
+				if (turn == piece.getTeam() && button[i][j].getIcon() != blankImage) {
+					button[i][j].setDisabledIcon(new ImageIcon(Game.class.getResource("Pieces\\hidden.png")));
+				} else if (turn != piece.getTeam()){
+					button[i][j].setDisabledIcon(button[i][j].getIcon());
+				}
+				button[i][j].setToolTipText(null);
+				button[i][j].setEnabled(false);
 			}
 		}
 	}
-}
+}//end class

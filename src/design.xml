@@ -16,9 +16,9 @@
 			<imagePainter method="buttonBackground" path="texture/buttonPressed.png"
 				sourceInsets="4 4 4 4" paintCenter="true" />
 		</state>
-		<state value="DISABLED and MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/b4.png"
-				sourceInsets="1 1 1 1" paintCenter="true" />
+		<state value="DISABLED">
+			<imagePainter method="buttonBackground" path="texture/buttonPressed.png"
+				sourceInsets="4 4 4 4" paintCenter="true" />
 		</state>
 		<state value="MOUSE_OVER">
 			<imagePainter method="buttonBackground" path="texture/buttonHover.png"
@@ -37,8 +37,8 @@
 			<imagePainter method="buttonBackground" path="texture/mapPressed2.png"
 				sourceInsets="6 6 6 6" paintCenter="true" />
 		</state>
-		<state value="DISABLED and MOUSE_OVER">
-			<imagePainter method="buttonBackground" path="texture/b4.png"
+		<state value="DISABLED">
+			<imagePainter method="buttonBackground" path="texture/disable.png"
 				sourceInsets="1 1 1 1" paintCenter="true" />
 		</state>
 		<state value="MOUSE_OVER">
@@ -106,4 +106,9 @@
 			sourceInsets="3 3 3 3" paintCenter="true" />
 	</style>
 	<bind style="progressBarStyle" type="region" key="progressBar" />
+	<style id="toolTipStyle">
+		<imagePainter method="toolTipBackground" path="texture/menu/basic.png"
+			sourceInsets="0 0 0 0" paintCenter="true" />
+	</style>
+	<bind style="toolTipStyle" type="region" key="toolTip" />
 </synth>

@@ -5,7 +5,7 @@ public class Witch extends PieceTemplate {
 		setTeam(team);
 		setStrength(6);
 		setMovement(1);
-		//setImage();
+		setImage(Pieces.Witch.class.getResource("witch.png"));
 		setTipText("Strength: 6");
 	}
 }
