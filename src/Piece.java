@@ -28,6 +28,12 @@ public class Piece {
 	private int numOfWither = 1;
 	private int numOfZombies = 4;
 	private int numOfTotal = 40;
+	
+	//Idk if we need this
+	private int x,y;
+	private int strength;
+	private int movement;
+	
 	public Piece(boolean team) {
 		enderDragon = new EnderDragon(team);
 		wither = new Wither(team);
