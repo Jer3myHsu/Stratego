@@ -2,7 +2,8 @@ import javax.swing.JButton;
 
 import Pieces.*;
 
-public class Piece {
+public class Piece 
+{
 	public EnderDragon enderDragon;
 	public Enderman enderman[];
 	public Flag flag;
@@ -33,8 +34,9 @@ public class Piece {
 	private int x,y;
 	private int strength;
 	private int movement;
-	
-	public Piece(boolean team) {
+	private int rank;
+	public Piece(boolean team) 
+	{
 		enderDragon = new EnderDragon(team);
 		wither = new Wither(team);
 		herobrine = new Herobrine(team);
@@ -73,8 +75,33 @@ public class Piece {
 			ghast[i] = new Ghast(team);
 		}
 	}
-	public boolean getTeam() {
+	public boolean getTeam()
+	{
 		return herobrine.getTeam();
+	}
+	public int getStrength()
+	{
+		return strength;
+	}
+	public int getXCoor()
+	{
+		return x;
+	}
+	public int getYCoor()
+	{
+		return y;
+	}
+	public void setStrength(int strength)
+	{
+		this.strength = strength;
+	}
+	public void setXCoor(int x)
+	{
+		this.x = x;
+	}
+	public void setYCoor(int y)
+	{
+		this.y = y;
 	}
 	public void resetPieces() {
 		this.numOfEnderDragon = 1;
@@ -91,14 +118,18 @@ public class Piece {
 		this.numOfZombies = 4;
 		this.numOfTotal = 40;
 	}
-	public boolean isAllPiecesOnBoard() {
-		if (numOfTotal == 0) {
+	public boolean isAllPiecesOnBoard() 
+	{
+		if (numOfTotal == 0) 
+		{
 			return true;
-		} else {
+		} else 
+		{
 			return false;
 		}
 	}
-	public void usePiece(String piece) {
+	public void usePiece(String piece)
+	{
 		numOfTotal--;
 		switch (piece) {
 		case "Ender Dragon": numOfEnderDragon--;
@@ -127,9 +158,11 @@ public class Piece {
 		break;
 		}
 	}
-	public boolean isAmountValid(String piece) {
+	public boolean isAmountValid(String piece) 
+	{
 		int amountLeft = 0;
-		switch (piece) {
+		switch (piece) 
+		{
 		case "Ender Dragon": amountLeft = numOfEnderDragon;
 		break;
 		case "Enderman": amountLeft = numOfEnderman;
@@ -155,13 +188,16 @@ public class Piece {
 		case "Zombie": amountLeft = numOfZombies;
 		break;
 		}
-		if (amountLeft > 0) {
+		if (amountLeft > 0)
+		{
 			return true;
-		} else {
+		} else 
+		{
 			return false;
 		}
 	}
-	public void setButton(String piece, JButton button) {
+	public void setButton(String piece, JButton button)
+	{
 		switch (piece) {
 		case "Ender Dragon": button.setIcon(enderDragon.getImage());
 		button.setToolTipText(enderDragon.getTipText());
@@ -200,5 +236,5 @@ public class Piece {
 		button.setToolTipText(zombie[0].getTipText());
 		break;
 		}
-	}
-}
+	}//end setButton
+}//end Piece class
