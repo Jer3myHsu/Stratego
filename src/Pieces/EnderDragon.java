@@ -8,4 +8,9 @@ public class EnderDragon extends PieceTemplate {
 		setImage(Pieces.EnderDragon.class.getResource("enderDragon.png"));
 		setTipText("Strength: 10 | This can only be defeated by the herobrine");
 	}
+	public int getStrenth()
+	{
+		return 10;
+		
+	}
 }

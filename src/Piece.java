@@ -34,7 +34,7 @@ public class Piece
 	private int x,y;
 	private int strength;
 	private int movement;
-	private int rank;
+	//private boolean team;
 	public Piece(boolean team) 
 	{
 		enderDragon = new EnderDragon(team);
@@ -75,6 +75,7 @@ public class Piece
 			ghast[i] = new Ghast(team);
 		}
 	}
+	//Getter methods
 	public boolean getTeam()
 	{
 		return herobrine.getTeam();
@@ -91,6 +92,11 @@ public class Piece
 	{
 		return y;
 	}
+	//Setter methods
+	/*public void setTeam(boolean team)
+	{
+		this.team = team;
+	}*/
 	public void setStrength(int strength)
 	{
 		this.strength = strength;
@@ -103,7 +109,8 @@ public class Piece
 	{
 		this.y = y;
 	}
-	public void resetPieces() {
+	public void resetPieces() 
+	{
 		this.numOfEnderDragon = 1;
 		this.numOfEnderman = 8;
 		this.numOfFlag = 1;
@@ -123,7 +130,8 @@ public class Piece
 		if (numOfTotal == 0) 
 		{
 			return true;
-		} else 
+		} 
+		else 
 		{
 			return false;
 		}
@@ -197,8 +205,9 @@ public class Piece
 		}
 	}
 	public void setButton(String piece, JButton button)
-	{
-		switch (piece) {
+	{// Need to create an object every time the character is placed
+		switch (piece) 
+		{
 		case "Ender Dragon": button.setIcon(enderDragon.getImage());
 		button.setToolTipText(enderDragon.getTipText());
 		break;
