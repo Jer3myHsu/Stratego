@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,7 +59,19 @@ public class Game
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		SplashScreen();
+		// Use "java -splash:splashTitle.gif Game" in cmd while in bin folder to run with splash
+		final SplashScreen splash = SplashScreen.getSplashScreen();
+		//SplashScreen();
+		JFrame.setDefaultLookAndFeelDecorated(false);
+		JFrame frame = new JFrame("Stratego");
+		//frame.setIconImage(<ICON>.getImage());
+		addComponentsToFrame(frame);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(true);
+		frame.pack();
+		frame.setSize(frame.getSize());
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 	public static void SplashScreen() {
 		JProgressBar progressBar = new JProgressBar();
@@ -112,11 +125,11 @@ public class Game
 				//frame.setIconImage(<ICON>.getImage());
 				addComponentsToFrame(frame);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setVisible(true);
 				frame.setResizable(true);
 				frame.pack();
 				frame.setSize(frame.getSize());
 				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
 			}
 		};
 		timer1 = new Timer(25, al);
