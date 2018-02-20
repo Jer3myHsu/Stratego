@@ -14,30 +14,59 @@ public class PieceTemplate
 	private String tips;
 	private ImageIcon image = new ImageIcon();
 	private String position;
-	public void setPosition(int x, int y) {
+	int x,y;
+	//Setter and Getter methods
+	public void setPosition(int x, int y)
+	{
 		this.position = x + "," + y;
 	}
-	public String getPosition() {
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+	public int getX()
+	{
+		return x;
+	}
+	public void setY(int y)
+	{
+		this.y = y;
+	}
+	public int getY()
+	{
+		return y;
+	}
+	public String getPosition() 
+	{
 		return position;
 	}
-	public void setAlive(boolean alive) {
+	public void setAlive(boolean alive)
+	{
 		this.alive = alive;
 	}
-	public boolean isAlive() {
+	public boolean isAlive() 
+	{
 		return alive;
 	}
-	public void setTeam(boolean team) {
+	public void setTeam(boolean team)
+	{
 		this.team = team;
 	}
-	public boolean getTeam() {
+	public boolean getTeam()
+	{
 		return team;
 	}
-	public void setStrength(int strength) {
+	public void setStrength(int strength) 
+	{
 		this.strength = strength;
 	}
-	public int getStrength() {
+	public int getStrength() 
+	{
 		return strength;
 	}
+	
+	
+	
 	public void setMovement(int pattern) {
 		//0 = Unmoveable
 		//1 = regular one set

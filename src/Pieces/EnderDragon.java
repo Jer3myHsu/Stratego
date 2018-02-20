@@ -1,7 +1,9 @@
 package Pieces;
 import Pieces.*;
-public class EnderDragon extends PieceTemplate {
-	public EnderDragon(boolean team) {
+public class EnderDragon extends PieceTemplate 
+{
+	public EnderDragon(boolean team) 
+	{
 		setTeam(team);
 		setStrength(10);
 		setMovement(1);

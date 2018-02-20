@@ -75,39 +75,9 @@ public class Piece
 			ghast[i] = new Ghast(team);
 		}
 	}
-	//Getter methods
 	public boolean getTeam()
 	{
 		return herobrine.getTeam();
-	}
-	public int getStrength()
-	{
-		return strength;
-	}
-	public int getXCoor()
-	{
-		return x;
-	}
-	public int getYCoor()
-	{
-		return y;
-	}
-	//Setter methods
-	/*public void setTeam(boolean team)
-	{
-		this.team = team;
-	}*/
-	public void setStrength(int strength)
-	{
-		this.strength = strength;
-	}
-	public void setXCoor(int x)
-	{
-		this.x = x;
-	}
-	public void setYCoor(int y)
-	{
-		this.y = y;
 	}
 	public void resetPieces() 
 	{
@@ -243,6 +213,7 @@ public class Piece
 		break;
 		case "Zombie": button.setIcon(zombie[numOfZombie].getImage());
 		button.setToolTipText(zombie[numOfZombie].getTipText());
+		System.out.println("Zombie created");
 		break;
 		}
 	}//end setButton
