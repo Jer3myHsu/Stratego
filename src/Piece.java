@@ -27,7 +27,7 @@ public class Piece
 	private int numOfTnt = 6;
 	private int numOfWitch = 4;
 	private int numOfWither = 1;
-	private int numOfZombies = 4;
+	private int numOfZombie = 4;
 	private int numOfTotal = 40;
 	
 	//Idk if we need this
@@ -122,7 +122,7 @@ public class Piece
 		this.numOfTnt = 6;
 		this.numOfWitch = 4;
 		this.numOfWither = 1;
-		this.numOfZombies = 4;
+		this.numOfZombie = 4;
 		this.numOfTotal = 40;
 	}
 	public boolean isAllPiecesOnBoard() 
@@ -162,7 +162,7 @@ public class Piece
 		break;
 		case "Wither": numOfWither--;
 		break;
-		case "Zombie": numOfZombies--;
+		case "Zombie": numOfZombie--;
 		break;
 		}
 	}
@@ -193,7 +193,7 @@ public class Piece
 		break;
 		case "Wither": amountLeft = numOfWither;
 		break;
-		case "Zombie": amountLeft = numOfZombies;
+		case "Zombie": amountLeft = numOfZombie;
 		break;
 		}
 		if (amountLeft > 0)
@@ -211,38 +211,38 @@ public class Piece
 		case "Ender Dragon": button.setIcon(enderDragon.getImage());
 		button.setToolTipText(enderDragon.getTipText());
 		break;
-		case "Enderman": button.setIcon(enderman[0].getImage());
-		button.setToolTipText(enderman[0].getTipText());
+		case "Enderman": button.setIcon(enderman[numOfEnderman].getImage());
+		button.setToolTipText(enderman[numOfEnderman].getTipText());
 		break;
 		case "Flag": button.setIcon(flag.getImage());
 		button.setToolTipText(flag.getTipText());
 		break;
-		case "Ghast": button.setIcon(ghast[0].getImage());
-		button.setToolTipText(ghast[0].getTipText());
+		case "Ghast": button.setIcon(ghast[numOfGhast].getImage());
+		button.setToolTipText(ghast[numOfGhast].getTipText());
 		break;
-		case "Golem": button.setIcon(golem[0].getImage());
-		button.setToolTipText(golem[0].getTipText());
+		case "Golem": button.setIcon(golem[numOfGolem].getImage());
+		button.setToolTipText(golem[numOfGolem].getTipText());
 		break;
 		case "Herobrine": button.setIcon(herobrine.getImage());
 		button.setToolTipText(herobrine.getTipText());
 		break;
-		case "Miner": button.setIcon(miner[0].getImage());
-		button.setToolTipText(miner[0].getTipText());
+		case "Miner": button.setIcon(miner[numOfMiner].getImage());
+		button.setToolTipText(miner[numOfMiner].getTipText());
 		break;
-		case "Skeleton": button.setIcon(skeleton[0].getImage());
-		button.setToolTipText(skeleton[0].getTipText());
+		case "Skeleton": button.setIcon(skeleton[numOfSkeleton].getImage());
+		button.setToolTipText(skeleton[numOfSkeleton].getTipText());
 		break;
-		case "Tnt": button.setIcon(tnt[0].getImage());
-		button.setToolTipText(tnt[0].getTipText());
+		case "Tnt": button.setIcon(tnt[numOfTnt].getImage());
+		button.setToolTipText(tnt[numOfTnt].getTipText());
 		break;
-		case "Witch": button.setIcon(witch[0].getImage());
-		button.setToolTipText(witch[0].getTipText());
+		case "Witch": button.setIcon(witch[numOfWitch].getImage());
+		button.setToolTipText(witch[numOfWitch].getTipText());
 		break;
 		case "Wither": button.setIcon(wither.getImage());
 		button.setToolTipText(wither.getTipText());
 		break;
-		case "Zombie": button.setIcon(zombie[0].getImage());
-		button.setToolTipText(zombie[0].getTipText());
+		case "Zombie": button.setIcon(zombie[numOfZombie].getImage());
+		button.setToolTipText(zombie[numOfZombie].getTipText());
 		break;
 		}
 	}//end setButton

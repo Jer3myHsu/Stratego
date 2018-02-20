@@ -145,7 +145,7 @@ public class Game
 		JPanel horizontalPanel = new JPanel();//Centers all Panels
 		JPanel buttonPanel = new JPanel();//Contains Map buttons
 		JPanel mapPanel = new JPanel();//Contains buttonPanel and the map
-		JPanel statPanel = new JPanel();//Contains the stats
+		JPanel placePiecePanel = new JPanel();//Contains the buttons to place pieces
 		JPanel rightPanel = new JPanel();//Contains all the right side panels
 		JMenuBar menuBar = new JMenuBar();
 		JMenu gameMenu = new JMenu("Game");
@@ -157,11 +157,11 @@ public class Game
 		JRadioButtonMenuItem endMap = new JRadioButtonMenuItem("End", false);
 		ButtonGroup mapsGroup = new ButtonGroup();
 		JMenuItem restartItem = new JMenuItem("Restart");
-		JButton mapButton[][] = new JButton[10][10];
+		MapButton mapButton[][] = new MapButton[10][10];
 		JButton sideButton[] = new JButton[12];
 		JButton endTurnButton = new JButton("End Turn");
 		JLabel backgroundImage = new JLabel(new ImageIcon(Game.class.getResource("Maps\\grassland.png")));
-		JLabel title = new JLabel("It is your turn...");
+		JLabel title = new JLabel("Player 1's turn...");
 		Font font = new Font("Minecraft", Font.BOLD, 32);
 		String names[] = {"Ender Dragon", "Tnt", "Flag", "Ghast", "Golem", "Herobrine",
 				"Miner", "Skeleton", "Enderman", "Witch", "Wither", "Zombie"};
@@ -198,14 +198,15 @@ public class Game
 				Piece piece;
 				if (turn == p1Turn) {
 					piece = p1Piece;
+					title.setText("Player 1's turn...");
 				} else {
 					piece = p2Piece;
+					title.setText("Player 2's turn...");
 				}
 				if (gamePhase == startPhase) {
 					if (thisButton.getIcon() != blankImage) {
 						return;
-					}
-					if (piece.isAmountValid(name)) {
+					} else if (piece.isAmountValid(name)) {
 						piece.usePiece(name);
 						piece.setButton(name, thisButton);
 					}
@@ -229,14 +230,14 @@ public class Game
 				if (gamePhase == startPhase) {
 					if (turn == p1Turn) {
 						disableAll(mapButton, p1Piece);
-						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
+						for (int i = 0; i < 4; i++) {
 							for (int j = 0; j < mapButton[i].length; j++) {
 								mapButton[i][j].setEnabled(true);
 							}
 						}
 					} else {
 						disableAll(mapButton, p2Piece);
-						for (int i = 0; i < 4; i++) {
+						for (int i = mapButton.length - 1; i >= mapButton.length - 4; i--) {
 							for (int j = 0; j < mapButton[i].length; j++) {
 								mapButton[i][j].setEnabled(true);
 							}
@@ -255,7 +256,7 @@ public class Game
 		buttonPanel.setLayout(new GridLayout(10, 10));
 		buttonPanel.setMaximumSize(new Dimension(620, 620));
 		horizontalPanel.setLayout(new BoxLayout(horizontalPanel, BoxLayout.X_AXIS));
-		statPanel.setLayout(new GridLayout(0,3, 10, 10));
+		placePiecePanel.setLayout(new GridLayout(0,3, 10, 10));
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		rightPanel.setName("sidePanel");
 
@@ -278,13 +279,17 @@ public class Game
 		mapMenu.add(netherMap);
 		mapMenu.add(endMap);
 
-		for (int i = 0; i < mapButton.length; i++)
+		for (int i = mapButton.length - 1; i >= 0; i--)
 		{
 			for (int j = 0; j < mapButton[i].length; j++)
 			{
-				mapButton[i][j] = new JButton(blankImage);
+				mapButton[i][j] = new MapButton(blankImage);
 				mapButton[i][j].setEnabled(false);
 				mapButton[i][j].setName("mapButton");
+				mapButton[i][j].setCoordinate(j, i);
+				if (i == 3 && j == 0) {
+					mapButton[i][j].setEnabled(true);
+				}
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
 			}
@@ -303,10 +308,10 @@ public class Game
 			sideButton[i] = new JButton(names[i]);
 			sideButton[i].setAlignmentX(Component.CENTER_ALIGNMENT);
 			sideButton[i].addActionListener(sideAction);
-			statPanel.add(sideButton[i]);
+			placePiecePanel.add(sideButton[i]);
 		}
-		statPanel.setOpaque(false);
-		rightPanel.add(statPanel);
+		placePiecePanel.setOpaque(false);
+		rightPanel.add(placePiecePanel);
 		rightPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		endTurnButton.addActionListener(nextPlayerAction);
 		endTurnButton.setEnabled(false);
