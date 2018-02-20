@@ -1,7 +1,5 @@
 package Pieces;
-
 import java.net.URL;
-
 import javax.swing.ImageIcon;
 
 /* Jeremy Hsu
@@ -64,34 +62,39 @@ public class PieceTemplate
 	{
 		return strength;
 	}
-	
-	
-	
-	public void setMovement(int pattern) {
+	public void setMovement(int pattern) 
+	{
 		//0 = Unmoveable
 		//1 = regular one set
 		//2 = Rook-like
 		this.moveSpeed = pattern;
 	}
-	public int getMovement() {
+	public int getMovement() 
+	{
 		return moveSpeed;
 	}
-	public void setImage(URL imagePath) {
+	public void setImage(URL imagePath) 
+	{
 		this.image = new ImageIcon(imagePath);
 	}
-	public ImageIcon getImage() {
+	public ImageIcon getImage() 
+	{
 		return image;
 	}
-	public void setTipText(String text) {
+	public void setTipText(String text)
+	{
 		this.tips = text;
 	}
-	public String getTipText() {
+	public String getTipText() 
+	{
 		return tips;
 	}
-	public int getNumOfPiecesAvailable() {
+	public int getNumOfPiecesAvailable()
+	{
 		return numOfPieces;
 	}
-	public void setNumOfPieces(int num) {
+	public void setNumOfPieces(int num) 
+	{
 		this.numOfPieces = num;
 	}
-}
+}//end PieceTemplate class

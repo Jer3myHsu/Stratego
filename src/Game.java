@@ -295,6 +295,8 @@ public class Game
 				}
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
+				setX(j);
+				setY(i);
 			}
 		}
 		buttonPanel.setOpaque(false);
@@ -324,6 +326,25 @@ public class Game
 		horizontalPanel.add(rightPanel);
 		container.add(horizontalPanel);
 	}
+	//Testing 
+	static int x,y;
+	private static void setY(int i) {
+		// TODO Auto-generated method stub
+		y = i;
+	}
+	private static void setX(int j) {
+		//
+		x = j;
+		
+	}
+	public static int getY() {
+		return y;
+	}
+	public static int getX() {
+		//
+		return x;
+		
+	}
 	public static void disableAll(JButton[][] button, Piece piece) {
 		for (int i = 0; i < button.length; i++) {
 			for (int j = 0; j < button[i].length; j++) {
@@ -337,4 +358,4 @@ public class Game
 			}
 		}
 	}
-}//end class
+}//end Game class

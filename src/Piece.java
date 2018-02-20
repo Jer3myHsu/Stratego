@@ -1,7 +1,5 @@
 import javax.swing.JButton;
-
 import Pieces.*;
-
 public class Piece 
 {
 	public EnderDragon enderDragon;
@@ -213,7 +211,10 @@ public class Piece
 		break;
 		case "Zombie": button.setIcon(zombie[numOfZombie].getImage());
 		button.setToolTipText(zombie[numOfZombie].getTipText());
+		//For testing purposes
+		Zombie newb = new Zombie(false);
 		System.out.println("Zombie created");
+		System.out.println(newb.getStrength());
 		break;
 		}
 	}//end setButton
