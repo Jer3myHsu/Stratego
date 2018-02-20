@@ -209,6 +209,9 @@ public class Game
 					} else if (piece.isAmountValid(name)) {
 						piece.usePiece(name);
 						piece.setButton(name, thisButton);
+						if (piece.isAmountValid(name)) {
+							//sideButton[].setEnabled(false);//Thing Jeremy is working on
+						}
 					}
 					if (piece.isAllPiecesOnBoard()) {
 						endTurnButton.setEnabled(true);
