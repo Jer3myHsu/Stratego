@@ -4,7 +4,6 @@ public class Zombie extends PieceTemplate
 {
 	public Zombie(boolean team) 
 	{
-		setX(x);
 		setTeam(team);
 		setStrength(4);
 		setMovement(1);

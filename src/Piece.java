@@ -33,6 +33,15 @@ public class Piece
 	private int strength;
 	private int movement;
 	//private boolean team;
+	//Testing whether or not to be placed in Piece or PieceTemplate
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+	public int getX()
+	{
+		return x;
+	}
 	public Piece(boolean team) 
 	{
 		enderDragon = new EnderDragon(team);
@@ -213,6 +222,7 @@ public class Piece
 		button.setToolTipText(zombie[numOfZombie].getTipText());
 		//For testing purposes
 		Zombie newb = new Zombie(false);
+		System.out.println("Coordinate:"+getX());
 		System.out.println("Zombie created");
 		System.out.println(newb.getStrength());
 		break;

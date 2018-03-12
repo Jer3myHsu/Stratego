@@ -209,6 +209,7 @@ public class Game
 					} else if (piece.isAmountValid(name)) {
 						piece.usePiece(name);
 						piece.setButton(name, thisButton);
+						piece.setX(72);
 						if (piece.isAmountValid(name)) {
 							//sideButton[].setEnabled(false);//Thing Jeremy is working on
 						}
@@ -295,8 +296,6 @@ public class Game
 				}
 				mapButton[i][j].addActionListener(mapActions);
 				buttonPanel.add(mapButton[i][j]);
-				setX(j);
-				setY(i);
 			}
 		}
 		buttonPanel.setOpaque(false);
@@ -325,25 +324,6 @@ public class Game
 		rightPanel.add(endTurnButton);
 		horizontalPanel.add(rightPanel);
 		container.add(horizontalPanel);
-	}
-	//Testing 
-	static int x,y;
-	private static void setY(int i) {
-		// TODO Auto-generated method stub
-		y = i;
-	}
-	private static void setX(int j) {
-		//
-		x = j;
-		
-	}
-	public static int getY() {
-		return y;
-	}
-	public static int getX() {
-		//
-		return x;
-		
 	}
 	public static void disableAll(JButton[][] button, Piece piece) {
 		for (int i = 0; i < button.length; i++) {
